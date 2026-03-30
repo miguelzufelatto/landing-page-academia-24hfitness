@@ -1,4 +1,4 @@
-# 24h Fitness — Academia-24Horas
+# 24h Fitness — Landing Page
 
 Site estático em HTML/CSS/Vanilla JS para a academia "24h Fitness".
 
