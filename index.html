@@ -1,294 +1,501 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>24h Fitness — Treine a qualquer hora</title>
-  <meta name="description" content="24h Fitness — Academia aberta 24 horas. Equipamentos modernos, personal trainers e flexibilidade para treinar quando quiser." />
-  <meta property="og:title" content="24h Fitness — Treine a qualquer hora" />
-  <meta property="og:description" content="Academia 24 horas com estrutura completa, personal trainers e ambientes seguros. Treine quando quiser." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" />
-  <meta name="theme-color" content="#1C1C1C" />
-  <link rel="stylesheet" href="styles/style.css">
-  
-  <style>
-    .icon, .service-card img, .class-card img {
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24h Fitness | Padrão Smart Fit</title>
+
+  <!-- Font Setup: Outfit (Premium Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            smart: '#FFB612',
+            zinc: {
+              50: '#fafafa',
+              100: '#f4f4f5',
+              200: '#e4e4e7',
+              300: '#d4d4d8',
+              400: '#a1a1aa',
+              500: '#71717a',
+              600: '#52525b',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b',
+              950: '#09090b',
+            }
+          },
+          boxShadow: {
+            'diffusion': '0 20px 40px -15px rgba(0,0,0,0.5)',
+            'glow': '0 0 30px rgba(255,182,18,0.15)',
+            'glow-strong': '0 0 40px rgba(255,182,18,0.3)',
+          }
+        }
+      }
     }
-    .testimonial img {
-      object-fit: cover;
+  </script>
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #09090b;
+      color: #fafafa;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Liquid Glass Effect */
+    .glass-panel {
+      background: rgba(24, 24, 27, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* Perpetual Physics Simulation */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-float-slow {
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .animate-float-fast {
+      animation: float 4s ease-in-out infinite reverse;
+    }
+
+    /* Pulse Status Ring */
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 182, 18, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 182, 18, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 182, 18, 0);
+      }
+    }
+
+    .status-pulse {
+      animation: pulse-ring 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Custom Scrollbar - Minimal */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+
+    /* Hiding invisible scrollbars but keeping functionality */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#">24h Fitness</a>
-      <nav id="main-nav" class="nav" role="navigation" aria-label="Menu principal">
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#aulas">Aulas</a>
-        <a href="#planos">Planos</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a class="btn btn-ghost" href="#contato">Contato</a>
-      </nav>
+
+<body class="overflow-x-hidden selection:bg-smart selection:text-zinc-950">
+
+  <!-- Desktop & Mobile Navigation (Liquid Glass) -->
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between glass-panel border-b-0 border-white/5 transition-all duration-300">
+    <div class="flex items-center gap-3">
+      <div
+        class="w-10 h-10 rounded-full bg-smart flex items-center justify-center text-zinc-950 font-bold text-lg status-pulse shadow-glow">
+        24</div>
+      <span class="font-bold text-xl tracking-tighter">Fitness</span>
     </div>
-  </header>
+    <div class="hidden md:flex items-center gap-10 text-sm font-medium text-zinc-400">
+      <a href="index.html#experiencia" class="hover:text-white transition-colors duration-300">Estrutura</a>
+      <a href="aulas.html" class="hover:text-white transition-colors duration-300">Aulas</a>
+      <a href="index.html#planos" class="hover:text-white transition-colors duration-300">Planos & Preços</a>
+    </div>
+    <button
+      class="bg-white text-zinc-950 px-6 py-2.5 rounded-full text-sm font-bold tracking-tight hover:scale-[0.98] active:scale-[0.95] transition-transform duration-300">
+      Matricule-se
+    </button>
+  </nav>
 
-  <main id="main-content">
-    <section id="hero" class="hero" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80')">
-      <div class="overlay"></div>
-      <div class="container hero-inner">
-        <h1>Treine a Qualquer Hora. Resultados 24/7.</h1>
-        <p class="lead">A 24h Fitness oferece estrutura completa, equipe qualificada e ambiente seguro — para você treinar quando quiser.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#planos">Conheça os Planos</a>
-          <button class="btn btn-secondary" id="openTrial">Agende uma Aula Experimental</button>
+  <!-- Hero Full Screen Center Architecture -->
+  <section class="min-h-[100dvh] w-full relative flex flex-col items-center justify-center pt-20 overflow-hidden">
+    
+    <!-- Full Background Image -->
+    <div class="absolute inset-0 z-0 bg-zinc-950">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=80"
+        alt="Estrutura de alta performance"
+        class="w-full h-full object-cover object-center opacity-[0.35] mix-blend-lighten">
+      <!-- Vignette and Dark Overlay for Text Readability -->
+      <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-zinc-950/20 to-zinc-950 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#09090b_100%)] opacity-80 pointer-events-none"></div>
+    </div>
+
+    <!-- Center Hero Focus (Content) -->
+    <div class="w-full max-w-4xl flex flex-col items-center justify-center px-6 text-center relative z-10 py-24 md:py-0">
+
+      <!-- Subtle Floating Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel w-fit mb-8 animate-float-slow bg-zinc-900/50">
+        <span class="w-2 h-2 rounded-full bg-smart"></span>
+        <span class="text-xs font-semibold tracking-widest text-zinc-300 uppercase">Padrão Equinox</span>
+      </div>
+
+      <!-- Typography Hierarchy -->
+      <h1 class="text-[3.5rem] md:text-7xl lg:text-[6.5rem] font-bold tracking-tighter leading-[0.95] mb-8 text-white">
+        Treine com <span class="text-smart inline-block">inteligência.</span>
+      </h1>
+
+      <p class="text-zinc-300 text-lg md:text-xl max-w-[50ch] leading-relaxed mb-12 mx-auto">
+        Acesso a mais de 2.000 unidades pela América Latina com o Plano Black. Equipamentos importados, aulas exclusivas e infraestrutura premium.
+      </p>
+
+      <!-- Center CTA Structure -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
+        <a href="#planos"
+          class="w-full sm:w-auto bg-smart text-zinc-950 px-10 py-4 rounded-full font-bold text-lg hover:-translate-y-1 active:translate-y-0 transition-transform duration-300 shadow-glow text-center">
+          Assine o Plano Black
+        </a>
+        <a href="#experiencia"
+          class="w-full sm:w-auto flex items-center justify-center gap-3 text-white font-medium hover:text-smart transition-colors group px-6 py-4">
+          Ver diferenciais
+          <i class="ph ph-arrow-down flex-shrink-0 group-hover:translate-y-1 transition-transform"></i>
+        </a>
+      </div>
+
+      <!-- Live Data Array Centered -->
+      <div class="mt-16 md:mt-24 flex items-center justify-center gap-8 sm:gap-16 border-t border-white/10 pt-10 w-full max-w-2xl mx-auto">
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold tracking-tighter text-white">+2k</p>
+          <p class="text-[10px] sm:text-xs text-zinc-400 font-mono mt-3 tracking-widest uppercase">Unidades ativas</p>
+        </div>
+        <div class="w-px h-16 bg-white/10"></div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold tracking-tighter text-smart">93<span class="text-2xl">%</span></p>
+          <p class="text-[10px] sm:text-xs text-zinc-400 font-mono mt-3 tracking-widest uppercase">OFF no 1º Mês</p>
         </div>
       </div>
-    </section>
-
-    <section id="diferenciais" class="section">
-      <div class="container">
-        <h2>Diferenciais da 24h Fitness</h2>
-        <p class="muted">Energia, disciplina, motivação e acessibilidade — tudo isso em uma academia premium e aberta 24 horas.</p>
-        <div class="grid grid-3">
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=150&h=150&q=80" alt="Academia aberta 24 horas" class="icon">
-            <h3>Aberto 24 horas</h3>
-            <p>Treine na sua hora — manhã, tarde, noite ou madrugada.</p>
-          </article>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=150&h=150&q=80" alt="Equipamentos modernos" class="icon">
-            <h3>Equipamentos modernos</h3>
-            <p>Máquinas e pesos atualizados para todos os níveis.</p>
-          </article>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=150&h=150&q=80" alt="Personal trainers qualificados" class="icon">
-            <h3>Personal trainers</h3>
-            <p>Profissionais qualificados para orientar seu progresso.</p>
-          </article>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1623874514711-0f321325f318?auto=format&fit=crop&w=150&h=150&q=80" alt="Ambiente seguro" class="icon">
-            <h3>Ambiente seguro</h3>
-            <p>Monitoramento e estrutura voltados à sua segurança.</p>
-          </article>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1596357395217-80de13130e92?auto=format&fit=crop&w=150&h=150&q=80" alt="Estrutura completa" class="icon">
-            <h3>Estrutura completa</h3>
-            <p>Vestiários, área de cardio e espaço funcional preparados para seu treino.</p>
-          </article>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=150&h=150&q=80" alt="Flexibilidade de horários" class="icon">
-            <h3>Flexibilidade</h3>
-            <p>Planos e horários pensados para sua rotina.</p>
-          </article>
+    </div>
+    
+    <!-- Floating Holographic Data Widget -->
+    <div
+      class="hidden lg:flex absolute bottom-12 right-12 glass-panel bg-zinc-900/50 p-5 rounded-3xl w-64 animate-float-fast shadow-diffusion z-10 backdrop-blur-3xl">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-zinc-800/80 flex items-center justify-center border border-white/5">
+          <i class="ph ph-barbell text-2xl text-smart"></i>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-white">Alto Padrão</p>
+          <p class="text-xs text-zinc-400 mt-0.5">Equipamentos tops</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="servicos" class="section section-alt">
-      <div class="container">
-        <h2>Serviços Oferecidos</h2>
-        <div class="grid grid-3">
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=200&h=200&q=80" alt="Musculação completa">
-            <h3>Musculação completa</h3>
-            <p>Área ampla com máquinas e pesos livres.</p>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=200&h=200&q=80" alt="Personal trainer">
-            <h3>Personal trainer</h3>
-            <p>Treinos personalizados e acompanhamento dedicado.</p>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=200&h=200&q=80" alt="Avaliação física">
-            <h3>Avaliação física</h3>
-            <p>Plano de treino baseado em sua condição atual.</p>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=200&h=200&q=80" alt="Área de cardio">
-            <h3>Área de cardio</h3>
-            <p>Esteiras, bikes e equipamentos de última geração.</p>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=200&h=200&q=80" alt="Treinamento funcional">
-            <h3>Treinamento funcional</h3>
-            <p>Aulas e circuitos para rendimento e mobilidade.</p>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=200&h=200&q=80" alt="Acompanhamento nutricional">
-            <h3>Acompanhamento nutricional</h3>
-            <p>Guias alimentares para acelerar seus resultados.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+  <!-- Bento Grid Section: A Experiência -->
+  <section id="experiencia" class="py-32 px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto border-t border-white/5">
 
-    <section id="aulas" class="section">
-      <div class="container">
-        <h2>Tipos de Aulas</h2>
-        <div class="grid grid-3">
-          <article class="class-card">
-            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=200&h=200&q=80" alt="Cross Training">
-            <h3>Cross Training</h3>
-            <p>Treino intenso e variado.</p>
-            <span class="badge">Avançado</span>
-          </article>
-          <article class="class-card">
-            <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=200&h=200&q=80" alt="Spinning">
-            <h3>Spinning</h3>
-            <p>Aulas energéticas para queimar calorias.</p>
-            <span class="badge">Intermediário</span>
-          </article>
-          <article class="class-card">
-            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=200&h=200&q=80" alt="Yoga">
-            <h3>Yoga</h3>
-            <p>Alongamento, respiração e foco mental.</p>
-            <span class="badge">Iniciante</span>
-          </article>
-          <article class="class-card">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=200&h=200&q=80" alt="Pilates">
-            <h3>Pilates</h3>
-            <p>Força do core e postura.</p>
-            <span class="badge">Intermediário</span>
-          </article>
-          <article class="class-card">
-            <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=200&h=200&q=80" alt="HIIT">
-            <h3>HIIT</h3>
-            <p>Treinos curtos e de alta intensidade.</p>
-            <span class="badge">Avançado</span>
-          </article>
-          <article class="class-card">
-            <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=200&h=200&q=80" alt="Treinamento Funcional">
-            <h3>Treinamento Funcional</h3>
-            <p>Movimentos aplicáveis ao dia a dia.</p>
-            <span class="badge">Todos os níveis</span>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- Offset Header -->
+    <div class="mb-16 md:w-2/3">
+      <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Ambiente projetado<br>para <span
+          class="text-zinc-500">resultados.</span></h2>
+      <p class="text-zinc-400 font-mono text-sm max-w-[50ch] leading-relaxed">Não é apenas suor. É tecnologia,
+        metodologia e ecossistema trabalhando ao seu favor em qualquer hora do dia.</p>
+    </div>
 
-    <section id="planos" class="section section-alt">
-      <div class="container">
-        <h2>Planos</h2>
-        <p class="muted">Escolha o plano que combina com sua rotina.</p>
-        <div class="grid grid-3">
-          <article class="plan-card">
-            <h3>Plano Basic</h3>
-            <p class="price">R$79/mês</p>
-            <ul>
-              <li>Acesso em horário limitado</li>
-              <li>Acesso à musculação</li>
-              <li>Preço mensal acessível</li>
-            </ul>
-            <button class="btn btn-primary">Assinar Plano</button>
-          </article>
-          <article class="plan-card plan-popular">
-            <h3>Plano Plus</h3>
-            <p class="price">R$139/mês</p>
-            <ul>
-              <li>Acesso 24 horas</li>
-              <li>Musculação + aulas coletivas</li>
-              <li>Avaliação física incluída</li>
-            </ul>
-            <button class="btn btn-primary">Assinar Plano</button>
-          </article>
-          <article class="plan-card">
-            <h3>Plano Premium</h3>
-            <p class="price">R$249/mês</p>
-            <ul>
-              <li>Acesso 24 horas</li>
-              <li>Todas as aulas incluídas</li>
-              <li>Sessões com personal trainer</li>
-              <li>Avaliação física completa</li>
-            </ul>
-            <button class="btn btn-primary">Assinar Plano</button>
-          </article>
-        </div>
-      </div>
-    </section>
+    <!-- Bento Grid (Asymmetric & Dense) -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[260px]">
 
-    <section id="depoimentos" class="section">
-      <div class="container">
-        <h2>Depoimentos</h2>
-        <div class="testimonials" id="testimonials">
-          <div class="testimonial active">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80" alt="Aluno Ana">
-            <blockquote>"Perdi 8kg e ganhei mais disposição. Treino às 5h da manhã e a equipe sempre me atende com profissionalismo."</blockquote>
-            <p class="attribution">Ana Silva — ★★★★★</p>
+      <!-- Card: Musculacao (Span 2x2) -->
+      <div
+        class="glass-panel p-8 rounded-[2rem] md:col-span-2 md:row-span-2 relative overflow-hidden group flex flex-col justify-end">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80"
+          alt="Área de Musculação"
+          class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col items-start">
+          <div
+            class="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-md text-smart border border-white/5">
+            <i class="ph ph-activity text-2xl"></i>
           </div>
-          <div class="testimonial">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" alt="Aluno João">
-            <blockquote>"A flexibilidade de horário mudou minha rotina. Agora consigo treinar depois do trabalho sem estresse."</blockquote>
-            <p class="attribution">João Pereira — ★★★★★</p>
+          <h3 class="text-3xl font-bold tracking-tighter mb-3">Musculação e Cárdio</h3>
+          <p class="text-zinc-300 text-sm max-w-[40ch] leading-relaxed">Equipamentos biométricos que garantem segurança
+            e biomecânica perfeita para todos os agrupamentos musculares.</p>
+        </div>
+      </div>
+
+      <!-- Card: Aulas -->
+      <div
+        class="glass-panel p-8 rounded-[2rem] md:col-span-2 relative overflow-hidden group flex flex-col justify-between z-10">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80"
+          alt="Smart Class"
+          class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent pointer-events-none"></div>
+        <div class="flex items-start justify-between relative z-10">
+          <div
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-smart text-zinc-950 shadow-glow">
+            <i class="ph ph-users-three text-xl"></i>
           </div>
-          <div class="testimonial">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80" alt="Aluno Marina">
-            <blockquote>"Os treinos com o personal me deram resultados visíveis em pouco tempo."</blockquote>
-            <p class="attribution">Marina Costa — ★★★★★</p>
+          <span
+            class="text-xs font-mono text-zinc-400 tracking-wider bg-zinc-950/50 px-2 py-1 rounded-md backdrop-blur-sm border border-white/5">Aulas
+            Exclusivas</span>
+        </div>
+        <div id="aulas" class="relative z-10">
+          <h3 class="text-2xl font-bold tracking-tighter mb-2 text-white">Smart Class</h3>
+          <p class="text-zinc-300 text-sm">Aulas imersivas: FITDANCE para ritmo, Smart Cross para potência HIIT, e Body
+            Combat para combate marcial.</p>
+        </div>
+      </div>
+
+      <!-- Card: Spa / Recovery -->
+      <div class="glass-panel p-8 rounded-[2rem] relative overflow-hidden group flex flex-col justify-between z-10">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80"
+          alt="Smart Spa"
+          class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent pointer-events-none"></div>
+        <div
+          class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-zinc-800 text-zinc-300 border border-white/10 relative z-10">
+          <i class="ph ph-armchair text-xl"></i>
+        </div>
+        <div class="relative z-10">
+          <h3 class="text-xl font-bold tracking-tighter mb-2 text-white">Smart Spa</h3>
+          <p class="text-zinc-300 text-sm">Cadeiras de massagem p/ recuperação muscular ativa.</p>
+        </div>
+      </div>
+
+      <!-- Card: Digital Services (App/Energy/Body) -->
+      <div class="glass-panel p-8 rounded-[2rem] relative overflow-hidden group flex flex-col justify-between z-10">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+          alt="Ecossistema Digital"
+          class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent pointer-events-none z-0"></div>
+        <div class="absolute -right-10 -bottom-10 opacity-[0.03] pointer-events-none z-0">
+          <i class="ph ph-device-mobile text-[150px] text-white"></i>
+        </div>
+        <div class="flex items-center gap-2 mb-6 relative z-10">
+          <span class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center"><i
+              class="ph ph-heartbeat text-sm text-white"></i></span>
+          <span class="w-8 h-8 rounded-full border border-zinc-700 flex items-center justify-center"><i
+              class="ph ph-lightning text-sm text-smart"></i></span>
+        </div>
+        <div class="relative z-10">
+          <h3 class="text-xl font-bold tracking-tighter mb-2 text-white">Ecossistema</h3>
+          <p class="text-zinc-300 text-sm">Integração Coach, Exames de Bioimpedância (Body) e App p/ treinos.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Planos: Horizontal Layout Hijack -->
+  <section id="planos" class="py-32 relative border-t border-white/5 overflow-hidden">
+
+    <!-- Background Ambient Light -->
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[600px] bg-smart/5 blur-[150px] rounded-full pointer-events-none">
+    </div>
+
+    <div class="px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto flex flex-col xl:flex-row gap-16 relative z-10">
+
+      <!-- Sticky Copy Section -->
+      <div class="w-full xl:w-1/3 flex flex-col">
+        <div class="xl:sticky xl:top-32">
+          <h2 class="text-5xl md:text-6xl font-bold tracking-tighter mb-8 text-white">Planos flexíveis.<br>Uso
+            inteligente.</h2>
+          <p class="text-zinc-400 max-w-[40ch] leading-relaxed mb-6">
+            Menos burocracia, mais resultados. Comece com 93% OFF no primeiro mês. Conheça as opções e escolha a melhor
+            para a sua rotina.
+          </p>
+          <div class="hidden xl:flex items-center gap-4 mt-16">
+            <i class="ph ph-arrow-right text-3xl text-smart"></i>
+            <span class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Opções ao lado</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="cta" class="cta" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80')">
-      <div class="overlay"></div>
-      <div class="container cta-inner">
-        <h2>Sua nova rotina começa hoje. Treine quando quiser.</h2>
-        <div class="cta-actions">
-          <a class="btn btn-primary large" href="#planos">Começar Agora</a>
-          <a class="btn btn-ghost large" href="#planos">Conhecer Planos</a>
+      <!-- Horizontal Cards Container -->
+      <div class="w-full xl:w-2/3 flex flex-col md:flex-row gap-6">
+
+        <!-- Plano Basic / Smart -->
+        <div
+          class="flex-1 glass-panel rounded-[2rem] p-8 md:p-10 flex flex-col relative border border-white/5 hover:border-white/20 transition-colors duration-300">
+          <h3 class="text-2xl font-bold text-white mb-2 tracking-tighter">Plano Smart</h3>
+          <p class="text-zinc-400 text-sm h-10">O essencial, qualidade impecável. Treine na sua unidade favorita.</p>
+
+          <div class="my-8 border-b border-white/10 pb-8">
+            <span class="text-xs text-smart font-mono uppercase tracking-wider block mb-1">A partir de</span>
+            <div class="flex items-end gap-2">
+              <span class="text-sm text-zinc-500 font-bold mb-1">R$</span>
+              <span class="text-6xl font-bold tracking-tighter text-white leading-none">119<span
+                  class="text-4xl">,90</span></span>
+            </div>
+            <p class="text-xs text-zinc-500 font-mono mt-3">1º mês promocional por R$ 9,90</p>
+          </div>
+
+          <div class="flex-1 flex flex-col mb-8">
+            <!-- Labels above functionality as per Dashboards -->
+            <p class="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-4">Inclusos no plano</p>
+            <ul class="space-y-4 text-sm text-zinc-300">
+              <li class="flex items-start gap-4"><i class="ph ph-check text-smart text-lg shrink-0 pt-0.5"></i> <span
+                  class="leading-relaxed">Acesso exclusivo à unidade sede</span></li>
+              <li class="flex items-start gap-4"><i class="ph ph-check text-smart text-lg shrink-0 pt-0.5"></i> <span
+                  class="leading-relaxed">Área de musculação e sistema cárdio</span></li>
+              <li class="flex items-start gap-4"><i class="ph ph-check text-smart text-lg shrink-0 pt-0.5"></i> <span
+                  class="leading-relaxed">Sem carência de fidelidade</span></li>
+            </ul>
+          </div>
+
+          <button
+            class="w-full bg-zinc-800 text-white py-4 rounded-full font-bold tracking-tight hover:bg-zinc-700 active:scale-[0.98] transition-all duration-300 pointer-events-auto">
+            Escolher Smart
+          </button>
         </div>
-      </div>
-    </section>
 
-    <section id="contato" class="section section-alt">
-      <div class="container">
-        <h2>Fale Conosco</h2>
-        <p>Endereço: Rua Exemplo, 123 — Bairro Centro, Cidade — (11) 99999-9999</p>
-        <p>Horário: Aberto 24 horas</p>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn btn-ghost" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <!-- Plano Black (Highlight) -->
+        <div
+          class="flex-1 rounded-[2rem] p-8 md:p-10 flex flex-col relative relative bg-gradient-to-b from-zinc-800/80 to-zinc-900 border border-smart/30 shadow-glow-strong md:-translate-y-4">
+          <!-- Featured Tag -->
+          <div
+            class="absolute -top-4 left-8 bg-smart text-zinc-950 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+            Plano Supremo
+          </div>
+
+          <h3 class="text-2xl font-bold text-smart mb-2 tracking-tighter">Plano Black</h3>
+          <p class="text-zinc-300 text-sm h-10">Treine no país inteiro e leve amigos. A melhor relação custo/benefício.
+          </p>
+
+          <div class="my-8 border-b border-white/10 pb-8">
+            <span class="text-xs text-zinc-400 font-mono uppercase tracking-wider block mb-1">A partir de</span>
+            <div class="flex items-end gap-2">
+              <span class="text-sm text-smart font-bold mb-1">R$</span>
+              <span class="text-6xl font-bold tracking-tighter text-white leading-none">159<span
+                  class="text-4xl">,90</span></span>
+            </div>
+            <p class="text-xs text-smart font-mono mt-3">1º mês promocional por R$ 9,90</p>
+          </div>
+
+          <div class="flex-1 flex flex-col mb-8">
+            <p class="text-xs text-zinc-400 font-bold uppercase tracking-wider mb-4">Inclusos no plano</p>
+            <ul class="space-y-4 text-sm text-zinc-200">
+              <li class="flex items-start gap-4"><i class="ph ph-check text-smart text-lg shrink-0 pt-0.5"></i> <span
+                  class="leading-relaxed font-semibold text-white">Acesso irrestrito a todas +2.000 academias</span>
+              </li>
+              <li class="flex items-start gap-4"><i class="ph ph-check text-smart text-lg shrink-0 pt-0.5"></i> <span
+                  class="leading-relaxed">Leve 5 convidados por mês gratuitamente</span></li>
+              <li class="flex items-start gap-4"><i class="ph ph-check text-smart text-lg shrink-0 pt-0.5"></i> <span
+                  class="leading-relaxed">Acesso às cadeiras do Smart Spa</span></li>
+              <li class="flex items-start gap-4"><i class="ph ph-check text-smart text-lg shrink-0 pt-0.5"></i> <span
+                  class="leading-relaxed">App Skeelo liberado (Audiobooks)</span></li>
+            </ul>
+          </div>
+
+          <button
+            class="w-full bg-smart text-zinc-950 py-4 rounded-full font-bold tracking-tight hover:opacity-90 active:scale-[0.98] transition-all duration-300 shadow-glow">
+            Escolher Black
+          </button>
+          <div class="mt-4 text-center">
+            <span class="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Fidelidade 12 Meses</span>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <strong>24h Fitness</strong>
-        <address>Rua Exemplo, 123 — Cidade</address>
-        <p>Tel: (11) 99999-9999</p>
       </div>
-      <div>
-        <p>Aberto 24 horas</p>
-        <a class="btn btn-ghost" href="https://wa.me/5511999999999" target="_blank" rel="noopener">Abrir WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- Left-Aligned Asymmetric Footer CTA -->
+  <section
+    class="border-t border-white/5 py-32 px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto relative flex flex-col md:flex-row md:items-end justify-between gap-12">
+    <!-- Decals -->
+    <div class="absolute left-0 top-0 w-px h-[30%] bg-gradient-to-b from-smart to-transparent opacity-50"></div>
+
+    <div class="max-w-3xl relative z-10">
+      <h2 class="text-5xl md:text-[5rem] font-bold tracking-tighter leading-none mb-8 text-white">
+        O fim do <span class="text-zinc-600">sedentarismo</span><br>
+        começa agora.
+      </h2>
+      <p class="text-zinc-400 text-lg md:text-xl font-light mb-10 max-w-[50ch]">
+        Sua oportunidade de treinar em instalações do mais alto nível com um investimento mínimo, livre de desculpas.
+      </p>
+    </div>
+
+    <div class="relative z-10 shrink-0">
+      <button
+        class="group glass-panel bg-white/5 hover:bg-white/10 border border-white/20 text-white px-8 py-5 rounded-full font-bold text-lg hover:scale-[0.98] active:scale-[0.95] transition-all duration-300 flex items-center justify-between gap-6 min-w-[280px]">
+        <span>Iniciar Matrícula</span>
+        <div
+          class="w-10 h-10 rounded-full bg-smart text-zinc-950 flex items-center justify-center group-hover:translate-x-1 transition-transform border border-transparent">
+          <i class="ph ph-arrow-right font-bold text-lg"></i>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- Data/Systems Legal Footer -->
+  <footer class="border-t border-white/5 bg-zinc-950 py-10 px-6 md:px-16 lg:px-24">
+    <div class="max-w-[1800px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 status-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
+        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Sistemas Operacionais</span>
+      </div>
+      <div class="text-center">
+        <p class="text-xs text-zinc-600 font-mono">
+          © 2026 24h Fitness (Inspirado no padrão Smart Fit). Dados não contratuais.
+        </p>
+      </div>
+      <div class="flex gap-6">
+        <a href="#"
+          class="text-xs text-zinc-500 hover:text-white font-mono tracking-widest uppercase transition-colors">Legal</a>
+        <a href="#"
+          class="text-xs text-zinc-500 hover:text-white font-mono tracking-widest uppercase transition-colors">Privacidade</a>
       </div>
     </div>
   </footer>
 
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="closeModal">×</button>
-      <h3 id="modalTitle">Agende sua Aula Experimental</h3>
-      <form id="trialForm">
-        <label>Nome <input type="text" name="name" required></label>
-        <label>Telefone <input type="tel" name="phone" required></label>
-        <label>Melhor horário <input type="text" name="time" placeholder="Ex.: 19:00"></label>
-        <div class="form-actions">
-          <button class="btn btn-primary" type="submit">Enviar</button>
-          <button class="btn btn-ghost" type="button" id="cancelModal">Cancelar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script src="scripts/main.js" defer></script>
 </body>
+
 </html>

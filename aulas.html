@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aulas e Modalidades | 24h Fitness</title>
+
+  <!-- Font Setup: Outfit (Premium Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            smart: '#FFB612',
+            zinc: {
+              50: '#fafafa',
+              100: '#f4f4f5',
+              200: '#e4e4e7',
+              300: '#d4d4d8',
+              400: '#a1a1aa',
+              500: '#71717a',
+              600: '#52525b',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b',
+              950: '#09090b',
+            }
+          },
+          boxShadow: {
+            'diffusion': '0 20px 40px -15px rgba(0,0,0,0.5)',
+            'glow': '0 0 30px rgba(255,182,18,0.15)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #09090b;
+      color: #fafafa;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Liquid Glass Effect */
+    .glass-panel {
+      background: rgba(24, 24, 27, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* Pulse Status Ring */
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 182, 18, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 182, 18, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 182, 18, 0);
+      }
+    }
+
+    .status-pulse {
+      animation: pulse-ring 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden selection:bg-smart selection:text-zinc-950">
+
+  <!-- Navigation -->
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between glass-panel border-b-0 border-white/5 transition-all duration-300">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div
+        class="w-10 h-10 rounded-full bg-smart flex items-center justify-center text-zinc-950 font-bold text-lg status-pulse shadow-glow group-hover:scale-105 transition-transform duration-300">
+        24</div>
+      <span class="font-bold text-xl tracking-tighter">Fitness</span>
+    </a>
+    <div class="hidden md:flex items-center gap-10 text-sm font-medium text-zinc-400">
+      <a href="index.html#experiencia" class="hover:text-white transition-colors duration-300">Estrutura</a>
+      <a href="aulas.html" class="text-white transition-colors duration-300 font-bold">Aulas</a>
+      <a href="index.html#planos" class="hover:text-white transition-colors duration-300">Planos & Preços</a>
+    </div>
+    <button
+      class="bg-white text-zinc-950 px-6 py-2.5 rounded-full text-sm font-bold tracking-tight hover:scale-[0.98] active:scale-[0.95] transition-transform duration-300">
+      Matricule-se
+    </button>
+  </nav>
+
+  <!-- Header Section for Aulas -->
+  <header class="pt-40 pb-16 px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto relative border-b border-white/5">
+    <div class="absolute top-0 right-0 w-[50vw] h-[50vh] bg-smart/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="relative z-10 max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-white/10 mb-8">
+        <span class="w-2 h-2 rounded-full bg-smart"></span>
+        <span class="text-[10px] font-mono tracking-widest text-zinc-400 uppercase">Modalidades Coletivas</span>
+      </div>
+      <h1 class="text-5xl md:text-[5.5rem] font-bold tracking-tighter leading-none mb-6">Treinos em Grupo.<br><span class="text-zinc-500">Resultados reais.</span></h1>
+      <p class="text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-[45ch] mb-10">
+        Programas desenvolvidos para maximizar sua performance, seja qual for o seu objetivo. Explore nossas dezenas de aulas exclusivas guiadas por especialistas.
+      </p>
+    </div>
+  </header>
+
+  <!-- Modalities Grid -->
+  <main class="py-20 px-6 md:px-16 lg:px-24 max-w-[1800px] mx-auto">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+      <!-- Card Smart Shape -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80" alt="Smart Shape" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-fire text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Emagrecimento</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Smart Shape</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Nosso exclusivo circuito de emagrecimento, intenso e com duração de 30 minutos é uma combinação de vários exercícios.</p>
+        </div>
+      </div>
+
+      <!-- Card Smart Cross -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80" alt="Smart Cross" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-lightning text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Emagrecimento</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Smart Cross</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Emagrecimento com ganho de condicionamento físico em apenas 30 minutos. Nosso treino funcional coletivo de alta intensidade.</p>
+        </div>
+      </div>
+
+      <!-- Card Smart Hiit -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1434596922112-19c563067271?auto=format&fit=crop&w=800&q=80" alt="Smart Hiit" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-heartbeat text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Condicionamento</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Smart Hiit</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Um treino intervalado de alta intensidade que usa o peso do próprio corpo. Ideal pra quem busca resultados rápidos.</p>
+        </div>
+      </div>
+
+      <!-- Card Smart Strong -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Smart Strong" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-barbell text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Força</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Smart Strong</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Treino coletivo de hipertrofia focado em fortalecimento muscular, trabalho de força e resistência extrema.</p>
+        </div>
+      </div>
+
+      <!-- Card FITDANCE -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1524561280629-9e8ff5f01fd8?auto=format&fit=crop&w=800&q=80" alt="FITDANCE" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-music-notes text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Dança</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">FITDANCE</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Para você dominar todos os passinhos. Uma das dinâmicas mais empolgantes apoiadas por professores licenciados.</p>
+        </div>
+      </div>
+
+      <!-- Card Zumba -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1502514276381-1ea51dfe201c?auto=format&fit=crop&w=800&q=80" alt="Zumba" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-speaker-hifi text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Dança</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Zumba</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Adora remexer os quadris? Aulas intensas de ritmo latino integradas na melhor academia, perfeitas para a queima calórica.</p>
+        </div>
+      </div>
+
+      <!-- Card Body Combat -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=800&q=80" alt="Body Combat" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-sword text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Luta</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Body Combat</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Karatê, Jiu-jitsu, Capoeira, Kung Fu e Taekwondo são inspirações para trabalhar todo o corpo e reflexos no seu limite máximo.</p>
+        </div>
+      </div>
+
+      <!-- Card Body Balance -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=800&q=80" alt="Body Balance" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-drop text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Equilíbrio</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Body Balance</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Inspirado na Yoga, com elementos do Tai Chi e do Pilates, este treino tem a função de melhorar a mente sob flexões exigentes.</p>
+        </div>
+      </div>
+
+      <!-- Card Smart Core -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" alt="Smart Core" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-hexagon text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Força</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Smart Core</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Treino intenso e focado na força dos músculos abdominais, lombar e paravertebrais para máxima estabilidade e estética.</p>
+        </div>
+      </div>
+
+      <!-- Card Alongamento -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80" alt="Alongamento" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-person-simple-stretch text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Flexibilidade</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Alongamento</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Aula focada em exercícios de alongamento passivo e ativo, mobilidade articular, alívio de estresse diário e contratura muscular.</p>
+        </div>
+      </div>
+
+      <!-- Card Smart Fight -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1564415315949-27bf36151ac4?auto=format&fit=crop&w=800&q=80" alt="Smart Fight" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-shield text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Luta</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Smart Fight</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Mistura das mecânicas avançadas de artes marciais mistas e treino funcional, ideal para diversificar sua exaustão calórica.</p>
+        </div>
+      </div>
+
+      <!-- Card Smart Bike -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=800&q=80" alt="Smart Bike" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-bicycle text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Cardio</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Smart Bike</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Perfeita para quem busca uma explosão de energia no Spining, oferecendo o equilíbrio entre intensidade bruta e música.</p>
+        </div>
+      </div>
+
+      <!-- Card Workout by FitDance -->
+      <div class="glass-panel p-8 rounded-[2rem] flex flex-col group transition-colors duration-500 border border-white/5 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1535365271109-25036d0e95df?auto=format&fit=crop&w=800&q=80" alt="Workout by FitDance" class="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 group-hover:opacity-30 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/70 to-zinc-950/30 pointer-events-none"></div>
+        <div class="flex items-start justify-between mb-8 relative z-10">
+          <div class="w-12 h-12 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-smart group-hover:scale-110 group-hover:shadow-glow transition-all duration-500 shrink-0">
+            <i class="ph ph-speaker-high text-xl"></i>
+          </div>
+          <span class="text-[10px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-zinc-950/80 backdrop-blur-md border border-white/5 mt-1 text-right shadow-lg">Dança</span>
+        </div>
+        <div class="relative z-10 mt-auto pt-6">
+          <h3 class="text-xl font-bold tracking-tighter mb-3 text-white">Workout by FitDance</h3>
+          <p class="text-sm text-zinc-300 leading-relaxed">Programa coreografado em parceria, desenhado exclusivamente como a opção número 1 para queima orgânica na dança.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Promo CTA (Smaller version of CTA from Index) -->
+  <section class="border-t border-white/5 bg-smart/5 py-24 px-6 md:px-16 lg:px-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mb-6">Experimente o inexplorado.</h2>
+      <p class="text-zinc-400 mb-10 max-w-[50ch] mx-auto">Adicione ritmo, combate ou estabilidade na sua grade se matriculando no plano Black com 93% OFF.</p>
+      <button class="bg-smart text-zinc-950 px-10 py-4 rounded-full font-bold text-lg hover:-translate-y-1 transition-transform duration-300 shadow-glow">
+        Assinar Agora
+      </button>
+    </div>
+  </section>
+
+  <!-- Data/Systems Legal Footer -->
+  <footer class="border-t border-white/5 bg-zinc-950 py-10 px-6 md:px-16 lg:px-24">
+    <div class="max-w-[1800px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 status-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
+        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Sistemas Operacionais</span>
+      </div>
+      <div class="text-center">
+        <p class="text-xs text-zinc-600 font-mono">
+          © 2026 24h Fitness (Padrão Equinox). Todas as aulas inclusas nos pacotes Premium.
+        </p>
+      </div>
+      <div class="flex gap-6">
+        <a href="#"
+          class="text-xs text-zinc-500 hover:text-white font-mono tracking-widest uppercase transition-colors">Legal</a>
+        <a href="#"
+          class="text-xs text-zinc-500 hover:text-white font-mono tracking-widest uppercase transition-colors">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
